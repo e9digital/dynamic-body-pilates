@@ -1,0 +1,161 @@
+body{
+font-size: 14px;
+}
+
+.mainnav{
+font-weight: 300;
+font-style: normal;
+background: none;
+color: #aaaaaa;
+/*OFF State color: #aaaaaa; */
+/*OVER State color: #666666; */
+/*SELECTED State with art background color: #269eb2; */
+text-decoration: none;
+word-spacing: normal;
+letter-spacing: 0px;
+font-size: 1.2em;
+}
+
+
+h1{
+font-weight: 700;
+font-style: normal;
+background: none;
+color: #269eb2;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.1em;
+font-size: 1.4em;
+}
+
+h2{
+font-weight: 700;
+font-style: normal;
+background: none;
+color: #D86956;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.35em;
+font-size: 1.15em;
+}
+
+
+p{
+font-weight: 300;
+font-style: normal;
+background: none;
+color: #000000;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.35em;
+font-size: 1.15em;
+}
+
+.founder{
+font-family: 'Georgia';
+font-style: italic;
+background: none;
+color: #269eb2;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1em;
+font-size: 0.9em;
+}
+
+.rebecca{
+font-weight: 700;
+font-style: normal;
+background: none;
+color: #D86956;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.1em;
+font-size: 1em;
+}
+
+.serif{
+font-family: 'Georgia';
+font-style: italic;
+background: none;
+color: #666666;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.35em;
+font-size: 1.25em;
+}
+
+.serif2{
+font-family: 'Georgia';
+font-style: italic;
+background: none;
+color: #269eb2;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.35em;
+font-size: 1.25em;
+}
+
+
+.link{
+font-weight: 700;
+font-style: normal;
+background: none;
+color: #D86956;
+/*OVER State color: #269eb2; */
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.2em;
+font-size: 1.1em;
+}
+
+
+.legal{
+font-weight: 300;
+font-style: normal;
+background-color: #fff;
+color: #78d3dd;
+text-decoration: none;
+word-spacing: normal;
+text-align: left;
+letter-spacing: 0px;
+line-height: 1.1em;
+font-size: 0.7em;
+}
+
+.footertextbold{
+font-weight: 700;
+font-style: normal;
+background: none;
+color: #269eb2;
+/*OVER State color: #D86956; */
+letter-spacing: 0px;
+line-height: 1.2em;
+font-size: 1.1em;
+}
+
+.footertext{
+font-weight: 300;
+font-style: normal;
+background: none;
+color: #269eb2;
+/*OVER State color: #D86956; */
+letter-spacing: 0px;
+line-height: 1.2em;
+font-size: 1.1em;
+}

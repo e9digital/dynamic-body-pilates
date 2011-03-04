@@ -1,0 +1,16 @@
+@import compass/utilities/general/clearfix
+
+#content
+  .quotes
+    +clearfix
+    margin-bottom: 1.5em
+    blockquote
+      +column(1)
+      height: 123px
+      width: 235px - 15px - 1px
+      border-right: 1px solid #ccc
+      padding-right: 15px
+      &.last
+        padding-right: none
+        margin-right: 0
+        border: none

@@ -1,0 +1,221 @@
+@import compass/utilities/lists/inline-block-list
+@import compass/css3/inline-block
+@import compass/layout/sticky-footer
+
+// hack to keep boxes from appearing around certain links
+a:active, a:focus, input[type=image]
+  outline-style: none
+
+#logo, #content, #footer-container
+  @include container
+
+#banner
+  z-index: 1
+#top-nav, #logo
+  z-index: 2
+
+.section
+  margin-bottom: 0.5em
+
+strong.m
+  font-size: 0.85em
+
+#banner 
+  height: 300px
+  background: $blue url(/images/banner.jpg) center top no-repeat
+
+body.is-this-for-me #banner
+  background-image: url(/images/banner2.jpg)
+
+body.our-services #banner
+  background-image: url(/images/banner4.jpg)
+
+body.our-founder #banner
+  background-image: url(/images/banner3.jpg)
+
+body.faqs #banner
+  background-image: url(/images/banner5.jpg)
+
+#top-nav
+  text-align: center
+  background: white url(/images/top_nav_bg.png) left bottom repeat-x
+  padding-bottom: 2px
+
+  > ul
+    +inline-block
+    padding-left: 1px
+    background: url(/images/top_nav_div.png) left no-repeat
+    list-style-type: none
+    li
+      float: left
+      height: 40px
+      padding-right: 1px
+      background: url(/images/top_nav_div.png) right no-repeat
+      a
+        +inline-block
+        padding: 12px 11px 17px
+      &.faqs a
+        padding: 12px 15px 17px
+
+      &.home.current a
+        background: url(/images/nav1.png) no-repeat
+      &.is-this-for-me.current a
+        background: url(/images/nav2.png) no-repeat
+      &.our-services.current a
+        background: url(/images/nav3.png) no-repeat
+      &.our-founder.current a
+        background: url(/images/nav4.png) no-repeat
+      &.faqs.current a
+        background: url(/images/nav5.png) no-repeat
+
+$logo_displacement: 116px
+
+#logo
+  h1 a
+    display: block
+    width: 739px
+    height: 245px
+    background: url(/images/logo.png)
+    text-indent: -999em
+
+#content
+  margin-top: $logo_displacement * -1
+  margin-bottom: 4em
+  #main
+    +column(3)
+
+  #sidebar
+    +column(1, true)
+    margin-top: $logo_displacement * -1 + 14px
+
+    blockquote
+      color: $blue
+
+@include sticky-footer(215px, '#layout', '#layout-footer', '#footer')
+
+#footer
+  border-top: 1px solid $light_blue
+  background: url(/images/footer.jpg) left top repeat-x
+
+  ul#footer-links
+    margin-top: 1em
+    +clearfix
+    li
+      +column(1)
+      height: 165px
+
+      a
+        padding-right: 5px
+
+      &.twitter, &.linkedin
+        height: 82px
+        margin-right: 0
+        .icon-container
+          height: 82px
+      
+      .icon-container
+        float: left
+        width: 50px
+        margin-right: 10px
+        height: 165px
+      .icon
+        background: url(/images/footer_icons.png) no-repeat
+        +inline-block
+        height: 50px
+        width: 50px
+
+      &.contact .icon
+        background-position: 0 bottom
+      &.contact:hover 
+        a
+          color: $red
+        .icon
+          background-position: 0 top
+      &.faqs .icon
+        background-position: -50px bottom
+      &.faqs:hover 
+        a
+          color: $red
+        .icon
+          background-position: -50px top
+      &.facebook .icon
+        background-position: -100px bottom
+      &.facebook:hover 
+        a
+          color: $red
+        .icon
+          background-position: -100px top
+      &.twitter .icon
+        background-position: -150px bottom
+      &.twitter:hover 
+        a
+          color: $red
+        .icon
+          background-position: -150px top
+      &.linkedin .icon
+        background-position: -200px bottom
+      &.linkedin:hover 
+        a
+          color: $red
+        .icon
+          background-position: -200px top
+
+  #footer-bottom
+    height: 16px
+    .copyright
+      +column(2)
+    .e9digital-link
+      +column(2, true)
+      a
+        display: block
+        float: right
+        width: 115px
+        height: 16px
+        text-indent: -9999em
+        background: url(/images/e9.png) no-repeat left bottom
+      a:hover
+        background-position: left top
+
+#content #main
+  ul.addressable-conditions
+    list-style: none outside none
+    @extend .quote
+    li
+      display: inline
+      padding-left: 25px
+      background: url(/images/bullet.png) left center no-repeat
+    li:first-child
+      background: none
+      padding-left: 0
+
+//.rates-header
+  //padding-left: 25px
+  //&.home
+    //background: url(/images/1.png) no-repeat
+  //&.studio
+    //background: url(/images/2.png) no-repeat
+
+
+.rebecca
+  +clearfix
+  margin-bottom: 1em
+  img
+    float: left
+
+  .image-label
+    padding: 60px 0 0 5px
+    width: 80px
+    float: left
+    .title
+      +serif-family
+      font-style: italic
+      color: $blue
+      line-height: 1em
+      font-size: 0.9em
+      margin-bottom: 0.4em
+    .name
+      font-weight: bold
+      color: $red
+      line-height: 1.1em
+      font-size: 1em
+

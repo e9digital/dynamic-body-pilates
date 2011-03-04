@@ -1,0 +1,51 @@
+- @site_name                     = "DynamicBodyPilates"
+- @title_delimiter               = " - "
+- @meta_description              = "Dynamic Body Pilates is custom Pilates for your body. Influenced by the Alexander Technique, Feldenkrais?, and dozens of other movement modalities, we create a program specifically for you. We?ll teach you where movements should originate from, and introduce you to muscles you didn?t know existed, making you more fit and in control."
+- @meta_keywords                 = "Dynamic Body Pilates, Pilates, Alexander Technique, Feldenkrais"
+- @current_page_title            = current_page == '/index.html' ? @site_name : full_page_title
+
+!!!
+%html
+  %head
+    %meta{:"http-equiv" => "Content-Type", :content => "text/html; CHARSET=utf-8"}/
+    %title= @current_page_title
+    %meta{:name => "description", :content => @meta_description}
+    %meta{:name => "keywords", :content => @meta_keywords}
+
+    = stylesheets :screen, :media => 'screen, projection'
+    = stylesheets :print, :media => 'print'
+    /[if lt IE 8]
+      = stylesheets :ie, :media => 'screen, projection'
+    <script type="text/javascript" src="http://use.typekit.com/rgy5dey.js"></script>
+    <script type="text/javascript">try{Typekit.load()}catch(e){}</script>
+
+    = javascripts 'base'
+
+  %body{:class => @body_class}
+    #layout
+      #header
+        #top-nav
+          = partial 'top_nav'
+        #banner
+      #content
+        #logo
+          %h1
+            %a{:href => '/'}= @current_page_title
+        = yield
+      #layout-footer
+
+    #footer
+      #footer-container
+        = partial 'footer'
+
+    #scripts
+      :javascript
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21789871-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();

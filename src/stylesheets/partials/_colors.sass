@@ -1,0 +1,45 @@
+$red: #d86956
+$blue: #2692b2
+$light_blue: #78d3dd
+$gray: #666
+
+.red
+  color: $red
+
+.blue
+  color: $blue
+
+.light-blue
+  color: $light_blue
+
+.gray
+  color: $gray
+
+$font_color: $gray
+$link_color: $red
+$link_hover_color: $blue
+
+@mixin a_base_color($color) 
+  &, &:link, &:visited, &:active
+    color: $color
+
+@mixin colors($font: $font_color, $link: $link_color, $link_hover: $link_hover_color, $link_current: false, $link_active: false)
+  color: $font
+
+  @if $link_active == false
+    $link_active: $link_hover
+
+  @if $link_current == false
+    $link_active: $link_hover
+
+  a
+    @include a_base_color($link)
+  a:hover
+    color: $link_hover
+  a.active, li.active > a
+    @include a_base_color($link_active)
+  a.current, li.current > a
+    @include a_base_color($link_active)
+
+body
+  @include colors
