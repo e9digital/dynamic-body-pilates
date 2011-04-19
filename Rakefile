@@ -1,6 +1,7 @@
 ssh_user    = "ubuntu@dynamicbodypilates.com"
 remote_root = "/srv/www/dynamicbodypilates.com"
 ssh_key     = "/home/travis/.ec2/gsg-keypair.pem"
+dropbox_dir = "/home/travis/dropbox/e9/jobs/DynamicBodyPilates/public"
 
 desc "Runs preview"
 task :preview do
@@ -23,14 +24,22 @@ end
 namespace :dropbox do
   desc "Sync images from dropbox to src"
   task :images do
-    puts "** synching images from dropbox **"
-    system("rsync -avz --delete ~/downloads/Dropbox/e9/projects/DynamicBodyPilates/public/images site")
+    if !dropbox_dir || dropbox_dir.empty?
+      puts "** dropbox_dir blank, skipping images sync **"
+    else
+      puts "** synching images from dropbox **"
+      system("rsync -avz --delete #{File.join(dropbox_dir, 'images')} site")
+    end
   end
 
   desc "Sync favicon from dropbox to src"
   task :favicon do
-    puts "** synching favicon from dropbox **"
-    system("cp ~/downloads/Dropbox/e9/projects/DynamicBodyPilates/public/favicon.ico site/")
+    if !dropbox_dir || dropbox_dir.empty?
+      puts "** dropbox_dir blank, skipping favicon sync **"
+    else
+      puts "** synching favicon from dropbox **"
+      system("cp #{File.join(dropbox_dir, 'favicon.ico')} site/")
+    end
   end
 
   desc "Sync required files from dropbox"
