@@ -1,5 +1,5 @@
 ssh_user    = "ubuntu@dynamicbodypilates.com"
-remote_root = "/srv/www/dynamicbodypilates.com"
+remote_root = "/srv/static/dynamicbodypilates.com"
 ssh_key     = "/home/travis/.ec2/gsg-keypair.pem"
 dropbox_dir = "/home/travis/dropbox/e9/jobs/DynamicBodyPilates/public"
 
