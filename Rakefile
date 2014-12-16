@@ -1,49 +1,37 @@
 ssh_user    = "ubuntu@dynamicbodypilates.com"
 remote_root = "/srv/static/dynamicbodypilates.com"
 ssh_key     = "/home/travis/.ec2/gsg-keypair.pem"
-dropbox_dir = "/home/travis/dropbox/e9/jobs/DynamicBodyPilates/public"
 
 desc "Runs preview"
-task :preview do
+task :preview => "images:copy" do
   puts "** starting preview server **"
   system "staticmatic preview ."
 end
 
 desc "Build the site"
-task :build => ["styles:clear", "javascripts:generate", "dropbox:sync"] do
+task :build => ["styles:clear", "javascripts:generate", "images:copy"] do
   puts "** building site **"
   system "staticmatic build ."
 end
 
 desc "Clear and generate new styles, build, and deploy"
-task :deploy => :build do
+task :deploy do
   puts "** deploying site **"
   system("rsync -avz --rsh \"ssh -i #{ssh_key}\" --delete site/ #{ssh_user}:#{remote_root}")
 end
 
-namespace :dropbox do
-  desc "Sync images from dropbox to src"
-  task :images do
-    if !dropbox_dir || dropbox_dir.empty?
-      puts "** dropbox_dir blank, skipping images sync **"
-    else
-      puts "** synching images from dropbox **"
-      system("rsync -avz --delete #{File.join(dropbox_dir, 'images')} site")
-    end
+namespace :images do
+  desc "Clear images"
+  task :clear do
+    puts "** clearing images **"
+    system "rm -Rfv site/images/*"
   end
 
-  desc "Sync favicon from dropbox to src"
-  task :favicon do
-    if !dropbox_dir || dropbox_dir.empty?
-      puts "** dropbox_dir blank, skipping favicon sync **"
-    else
-      puts "** synching favicon from dropbox **"
-      system("cp #{File.join(dropbox_dir, 'favicon.ico')} site/")
-    end
+  desc "Copy images from src to site"
+  task :copy => :clear do 
+    puts "** copying images **"
+    system "mkdir -p site/images && cp -r src/images/* site/images/"
   end
-
-  desc "Sync required files from dropbox"
-  task :sync => [:images, :favicon]
 end
 
 namespace :javascripts do
